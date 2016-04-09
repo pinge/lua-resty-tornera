@@ -7,10 +7,10 @@ my $pwd = cwd();
 our $HttpConfig = qq{
     lua_shared_dict $shm_handle 1m;
     lua_package_path "$pwd/lib/?.lua;";
-    init_by_lua '
+    init_by_lua_block {
         local tornera_api_m = require "resty/tornera/api"
         tornera_api = tornera_api_m:new("$shm_handle")
-    ';
+    }
 };
 
 no_long_string();
