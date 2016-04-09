@@ -182,3 +182,5 @@ luac.out
 *.x86_64
 *.hex
 
+# tests
+t/servroot

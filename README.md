@@ -1,7 +1,7 @@
 Name
 ====
 
-lua-resty-tornera - A traffic replay tool with an easy to use API for OpenResty/LuaJIT
+lua-resty-tornera - A traffic replay tool with an easy to use HTTP API for OpenResty/LuaJIT
 
 Table of Contents
 =================
@@ -55,10 +55,10 @@ Synopsis
     }
     
     location /_replay {
+        allow 127.0.0.1;
+        allow 10.0.0.0/8;
+        deny all;
         content_by_lua_block {
-            allow 127.0.0.1;
-            allow 10.0.0.0/8;
-            deny all;
             tornera_api:process_api_request()
         }
     }
@@ -162,5 +162,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 See Also
 ========
 * the ngx_lua module: http://wiki.nginx.org/HttpLuaModule
+* the lua-resty-logger-socket module: https://github.com/cloudflare/lua-resty-logger-socket
 
 [Back to TOC](#table-of-contents)
